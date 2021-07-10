@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Add New Employee";
+}
+
+@model Employee
+
+<h1 class="text-center">Add New Employee</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <br>
+
+    <input asp-for="Name" placeholder="Name .." />
+    <span asp-validation-for="Name" class="bg-danger"></span>
+
+    <br>
+
+    <input asp-for="Email" placeholder="Email .." />
+    <span asp-validation-for="Email" class="bg-danger"></span>
+
+    <br>
+
+    <select asp-items="ViewBag.cmps" asp-for="Company_ID"></select>
+
+    <br>
+
+    <input type="submit" value="Add" class="btn btn-success" />
+</form>

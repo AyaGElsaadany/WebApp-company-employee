@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Add New Company";
+}
+
+@model Company
+
+<h1 class="text-center">Add New Company</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <br>
+
+    <input asp-for="Name" placeholder="Name .." />
+    <span asp-validation-for="Name" class="bg-danger"></span>
+
+    <br>
+
+    <input asp-for="Website" placeholder="Website .." />
+    <span asp-validation-for="Website" class="bg-danger"></span>
+
+    <br>
+
+    <input asp-for="Address" placeholder="Address .." />
+    <span asp-validation-for="Address" class="bg-danger"></span>
+
+    <br>
+
+    <input type="submit" value="Add" class="btn btn-success" />
+</form>

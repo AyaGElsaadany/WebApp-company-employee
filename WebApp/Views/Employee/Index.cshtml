@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "All Employees";
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+@using X.PagedList.Mvc.Core;
+
+@model IPagedList<WebApp.Models.Employee>
+
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h1 class="text-center">Employees</h1>
+
+<a asp-action="Add" asp-controller="Employee" class="btn btn-success">Add Employee</a>
+
+<br>
+
+<form asp-controller="Employee" asp-action="Index" class="form-inline mt-3">
+    <div class="form-group">
+        <input type="text" name="str" placeholder="Search By Name, Email or Company Name" class="w-75 form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<br />
+
+<table class="table table-bordered table-hover text-center">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Company Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td>@item.company.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+
+        @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+
+@*@PagedList.Mvc.HtmlHelper.PagedListPager(null , Model, page => Url.Action("Index", new { page }))*@
+
+
